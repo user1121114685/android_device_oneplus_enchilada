@@ -136,3 +136,4 @@ USE_RECOVERY_INSTALLER := true
 RECOVERY_INSTALLER_PATH := device/oneplus/fajita/installer
 TW_EXCLUDE_TWRPAPP := true
 TW_HAS_EDL_MODE := true
+TW_NO_USB_STORAGE := true
