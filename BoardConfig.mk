@@ -49,7 +49,7 @@ BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 vi
 BOARD_KERNEL_CMDLINE += skip_override androidboot.fastboot=1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_PREBUILT_KERNEL := device/oneplus/fajita/prebuilt/Image.gz-dtb
+TARGET_PREBUILT_KERNEL := device/oneplus/enchilada/prebuilt/Image.gz-dtb
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm845
@@ -76,8 +76,8 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 
 # Partitions (listed in the file) to be wiped under recovery.
-TARGET_RECOVERY_WIPE := device/oneplus/fajita/recovery.wipe
-TARGET_RECOVERY_FSTAB := device/oneplus/fajita/fstab.hardware
+TARGET_RECOVERY_WIPE := device/oneplus/enchilada/recovery.wipe
+TARGET_RECOVERY_FSTAB := device/oneplus/enchilada/fstab.hardware
 
 
 # Workaround for error copying vendor files to recovery ramdisk
@@ -133,7 +133,7 @@ TW_INCLUDE_CRYPTO_FBE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 TW_USE_LEDS_HAPTICS := true
 USE_RECOVERY_INSTALLER := true
-RECOVERY_INSTALLER_PATH := device/oneplus/fajita/installer
+RECOVERY_INSTALLER_PATH := device/oneplus/enchilada/installer
 TW_EXCLUDE_TWRPAPP := true
 TW_HAS_EDL_MODE := true
 TW_NO_USB_STORAGE := true
