@@ -24,7 +24,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-
 import /init.blu_spark.rc
 
 on fs
@@ -91,7 +90,7 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
+service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
     user root
     group root
     disabled
@@ -108,14 +107,14 @@ service time_daemon /sbin/time_daemon
     group root
     disabled
     seclabel u:r:recovery:s0
-
+	
 # This helps fix ld.config.txt errors from the linker on Android 8.1+
 service ldconfigtxt /sbin/touch /sbin/ld.config.txt
     oneshot
     seclabel u:r:recovery:s0
 
 on boot
-	export LD_CONFIG_FILE /sbin/ld.config.txt
+    export LD_CONFIG_FILE /sbin/ld.config.txt
     setprop sys.usb.config adb
     write /proc/touchpanel/gesture_enable 1
     write /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
@@ -130,18 +129,18 @@ on init
 
 on property:crypto.ready=0
     stop sbinqseecomd
-    stop keymaster-4-0
+    stop keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
 
 on property:crypto.ready=1
     start sbinqseecomd
 
-on property:vendor.sys.listeners.registered=true
-    start keymaster-4-0
+on property:sys.listeners.registered=true
+    start keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
     restart time_daemon
 
 on property:sys.usb.config=mtp,adb
-    restart time_daemon
+    restart time_daemon				   
